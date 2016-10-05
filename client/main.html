@@ -5,21 +5,42 @@
 <body>
   <h1>Welcome to myComponents, a smart electronic component collections</h1>
 
-  {{> hello}}
-  {{> info}}
+  {{> componentsList}}
+  <!-- {{> componentDetail}} -->
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+
+<template name="componentsList">
+  <div id="componets-counter">Your collection counts {{componentsCount}} components</div>
+
+  <div class="table-header">
+    <div class="table-col col-1">Category</div>
+    <div class="table-col col-2">Type/Manufacturer</div>
+    <div class="table-col col-3">Code / value</div>
+    <div class="table-col col-4">Description</div>
+    <div class="table-col col-5">Qty</div>
+    <div class="table-col col-6">Last Price</div>
+  </div>
+
+
+  {{#each components}}
+    {{> componentsRow}}
+  {{/each}}
 </template>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+
+<template name="componentsRow">
+  <div class="table-row">
+    <div class="table-col col-1">{{category}}</div>
+    <div class="table-col col-2">{{type}}</div>
+    <div class="table-col col-3">{{code}}</div>
+    <div class="table-col col-4">{{description}}</div>
+    <div class="table-col col-5">{{quantity}}</div>
+    <div class="table-col col-6">{{lastprice}}</div>
+  </div>
+</template>
+
+
+<template name="componentsDetail">
+
 </template>

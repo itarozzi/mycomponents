@@ -1,1 +1,20 @@
 /* CSS declarations go here */
+
+
+.table-header {
+  background-color: #aa0000;
+  font-weight: bold;
+}
+
+.table-col {
+    float: left;
+    padding: 5px;
+    border: 1px solid gray;
+    width: 10%;
+}
+
+.table-row {
+    content: "";
+    clear: both;
+    display: block;
+}
