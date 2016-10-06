@@ -1,20 +1,35 @@
 /* CSS declarations go here */
 
-
+body {
+  font-family: sans-serif;
+}
 .table-header {
   background-color: #aa0000;
   font-weight: bold;
-}
-
-.table-col {
-    float: left;
-    padding: 5px;
-    border: 1px solid gray;
-    width: 10%;
+  border: 1px solid gray;
 }
 
 .table-row {
     content: "";
     clear: both;
     display: block;
+    min-height: 1em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.table-row:hover {
+  background-color: green;
+}
+
+.table-col {
+    float: left;
+    display: block;
+    width: 20%;
+}
+
+.col-qty {
+  width: 5%;
+  font-weight: bold;
+  text-align: right;
 }
