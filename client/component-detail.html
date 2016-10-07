@@ -1,0 +1,21 @@
+
+
+<template name="componentDetail">
+  <div class="component-detail"  id="{{_id}}" data-id="{{_id}}">
+    <form class="component-form">
+      {{> selectCategory}}
+
+      <label>Quantity</label> <input type="text" name="quantity" value="{{quantity}}">
+    </form>
+  </div>
+</template>
+
+
+<template name="selectCategory">
+  <select id="selectCategory">
+    <option value="" {{isSelected}}></option>
+    {{#each catNameId}}
+    <option value="{{this}}" {{isSelected}}>{{this}}</option>
+    {{/each}}
+  </select>
+</template>

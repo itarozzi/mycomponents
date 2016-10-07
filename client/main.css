@@ -33,3 +33,23 @@ body {
   font-weight: bold;
   text-align: right;
 }
+
+
+.component-detail {
+  width: 60%;
+  display: block;
+  border: auto;
+  background: linen;
+  border-radius: 7px;
+   margin:30px auto 0;
+   padding:6px;
+   position:absolute;
+   /*width:800px;*/
+   top: 50%;
+   left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+     transform: translate(-50%,-50%);
+}
