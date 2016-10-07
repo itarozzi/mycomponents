@@ -26,17 +26,12 @@ Template.componentsList.helpers({
 
 Template.componentsList.events({
   "click .table-row": function(event, template){
-    let  selectedId = '';
-
-    if (typeof selectedId === 'string' || selectedId instanceof String) {
-      selectedId = "s" + event.currentTarget.id;
-
-    } else {
-      selectedId = event.currentTarget.id._id;
-    }
+    let  selectedId = event.currentTarget.id;
 
     console.log("ROW Click" + selectedId);
-    Session.set('selectedComponentDetailId', selectedId);
+     ;
+
+    Session.set('selectedComponentDetailId', (Session.equals("selectedComponentDetailId", selectedId) ? '' : selectedId));
   }
 });
 
@@ -44,10 +39,9 @@ Template.componentsList.events({
 Template.componentsRow.helpers({
   isDetailVisible() {
 
-    const currentId = this._id;
+    const currentId = this._id._str;
     const selId = Session.get('selectedComponentDetailId');
 
-    
 
     return selId === currentId ? true : false;
   }

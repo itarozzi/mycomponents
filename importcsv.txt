@@ -1,0 +1,1 @@
+mongoimport --host localhost:3001 --type csv --headerline  --db meteor --collection components < components.csv 
