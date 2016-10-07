@@ -19,7 +19,7 @@ body {
 }
 
 .table-row:hover {
-  background-color: green;
+  background-color: beige;
 }
 
 .table-col {
@@ -34,22 +34,77 @@ body {
   text-align: right;
 }
 
+.new-line{
+  clear: both;;
+  float: left;
+  display: inline-block;
+}
 
-.component-detail {
-  width: 60%;
+label {
   display: block;
-  border: auto;
-  background: linen;
-  border-radius: 7px;
-   margin:30px auto 0;
-   padding:6px;
-   position:absolute;
-   /*width:800px;*/
-   top: 50%;
-   left: 50%;
-    top: 50%;
-    -ms-transform: translate(-50%,-50%);
-    -moz-transform:translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-     transform: translate(-50%,-50%);
+  margin:  8px 0px 0px;
+  font-size: 90%;
+  font-weight: bolder;
+  font-variant: small-caps;
+}
+input {
+  width: 80%
+}
+
+span.close {
+  display: block;
+    float: right;
+}
+
+
+.detail-description {
+}
+
+.detail-quantity {
+}
+
+
+
+/* Modal Header */
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 4px 4px;}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+   -webkit-animation-duration: 0.1s;
+    animation-name: animatetop;
+    animation-duration: 0.1s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }

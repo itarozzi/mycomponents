@@ -3,7 +3,6 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './component-detail.html';
 
-Session.setDefault('selectedComponentDetailId', '');
 
 function distinct(collection, field) {
   return _.uniq(collection.find({}, {
@@ -11,30 +10,32 @@ function distinct(collection, field) {
   }).map(x => x[field]), true);
 }
 
+
+Template.registerHelper('selectedComponent', function () {
+  const selectedId = Session.get('selectedComponentDetailId')
+  console.log("@@@@@@1 " + selectedId);
+  const selectedComponent = ComponentsCollection.findOne(new Meteor.Collection.ObjectID(selectedId));
+  console.log("@@@@@@2 " + selectedComponent);
+  return selectedComponent;
+  }
+);
+
+
 Template.selectCategory.helpers({
-  create: function(){
-  },
-  rendered: function(){
-  },
-  destroyed: function(){
-  },
-  catNameId: function () {
-
+  getCategories: function () {
     return distinct(ComponentsCollection, 'category');
-    // var data = ComponentsCollection.find().fetch();
-    // var distinctData = _.uniq(data, false, function(d) {return d.category});
-    // return _.pluck(distinctData, "category");
-
-
-// , find({}, {
-    //   fields: {
-    //     category: 1,
-    //     _id: 1
-    //   }
-    // }));
   },
   isSelected: function () {
-    //return Session.equals('selectedHouseId', this._id) ? 'selected' : '';
+    return (ComponentsCollection.findOne({_id: new Meteor.Collection.ObjectID( Session.get('selectedComponentDetailId'))}).category == this) ? 'selected' : '';
+  }
+});
+
+Template.selectType.helpers({
+  getTypes: function () {
+    return distinct(ComponentsCollection, 'type');
+  },
+  isSelected: function () {
+    return (ComponentsCollection.findOne({_id: new Meteor.Collection.ObjectID( Session.get('selectedComponentDetailId'))}).type == this) ? 'selected' : '';
   }
 });
 

@@ -1,20 +1,41 @@
 
 
 <template name="componentDetail">
-  <div class="component-detail"  id="{{_id}}" data-id="{{_id}}">
-    <form class="component-form">
+  <div class="component-detail modal-content"  id="{{_id}}" data-id="{{_id}}">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h2>Component detail</h2>
+    </div>
+    {{#with selectedComponent}}
+    <form class="component-form modal-body">
       {{> selectCategory}}
+      {{> selectType}}
 
-      <label>Quantity</label> <input type="text" name="quantity" value="{{quantity}}">
+      <label for='code'>Code:</label>  <input type="text" id="code" value="{{code}}">
+      <br>
+      <label for="description">Desciption</label><input class="detail-description" type="text"   name="description" value="{{description}}">
+      <label for="quantity">Quantity</label> <input type="text"  class="detail-quantity" name="quantity" value="{{quantity}}">
     </form>
+    {{/with}}
+
+    <div class="modal-footer">
+      <h4>{{message}}</h4>
+  </div>
   </div>
 </template>
 
 
 <template name="selectCategory">
-  <select id="selectCategory">
-    <option value="" {{isSelected}}></option>
-    {{#each catNameId}}
+  <select id="selectCategory" class="new-line">
+    {{#each getCategories}}
+    <option value="{{this}}" {{isSelected}}>{{this}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="selectType">
+  <select id="selectType">
+    {{#each getTypes}}
     <option value="{{this}}" {{isSelected}}>{{this}}</option>
     {{/each}}
   </select>

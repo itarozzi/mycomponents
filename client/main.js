@@ -29,7 +29,7 @@ Template.componentsList.events({
     let  selectedId = event.currentTarget.id;
 
     console.log("ROW Click" + selectedId);
-     ;
+
 
     Session.set('selectedComponentDetailId', (Session.equals("selectedComponentDetailId", selectedId) ? '' : selectedId));
   }
@@ -41,8 +41,7 @@ Template.componentsRow.helpers({
 
     const currentId = this._id._str;
     const selId = Session.get('selectedComponentDetailId');
-
-
+    
     return selId === currentId ? true : false;
   }
 });
