@@ -8,7 +8,7 @@
     </div>
     {{#with selectedComponent}}
     <form class="component-form modal-body">
-      {{> selectCategory}}
+      {{> selectCategory type='detail' }}
       {{> selectType}}
 
       <label for='code'>Code:</label>  <input type="text" id="code" value="{{code}}">
@@ -27,8 +27,8 @@
 
 <template name="selectCategory">
   <select id="selectCategory" class="new-line">
-    {{#each getCategories}}
-    <option value="{{this}}" {{isSelected}}>{{this}}</option>
+    {{#each getCategories }}
+        <option value="{{this}}" {{isSelected}}>{{this}}</option>
     {{/each}}
   </select>
 </template>

@@ -14,20 +14,44 @@
   <div id="componets-counter">Your collection counts {{componentsCount}} components</div>
 
   <div class="table-header">
-    <div class="table-col col-cat">Category</div>
-    <div class="table-col col-type">Type/Manufacturer</div>
+    <div class="table-col col-cat">Category </div>
+    <div class="table-col col-type">Type/Manufacturer </div>
     <div class="table-col col-code">Code / value</div>
     <div class="table-col col-desc">Description</div>
     <div class="table-col col-qty">Qty</div>
     <div class="table-col col-price">Last Price</div>
   </div>
+  <div class="table-header">
+    {{> filterComponents}}
+  </div>
 
 
-  {{#each components}}
-    {{> componentsRow}}
-  {{/each}}
+  <div class="scroll-container">
+    {{#each components}}
+      {{> componentsRow}}
+      {{/each}}
+    </div>
 </template>
 
+
+<template name="filterComponents">
+    <div class="table-col col-cat">
+      <select id="filterCategory">
+          <option value="--ALL--" {{isCatSelected}} >--ALL--</option>
+        {{#each getCategories }}
+            <option value="{{this}}" {{isCatSelected}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="table-col col-type">
+      <select id="filterType">
+          <option value="--ALL--" {{isTypeSelected}} >--ALL--</option>
+        {{#each getTypes }}
+          <option value="{{this}}" {{isTypeSelected}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+</template>
 
 <template name="componentsRow">
   <div class="table-row"  id="{{_id._str}}" data-id="{{_id._str}}">

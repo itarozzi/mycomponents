@@ -3,11 +3,28 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './component-detail.html';
 
+LocalComponent = new Mongo.Collection(null);
+updateLocalComponent = function (id, modifier) {
+  LocalHouse.update({
+      '_id': id
+    },
+    modifier
+  );
+};
 
-function distinct(collection, field) {
-  return _.uniq(collection.find({}, {
-    sort: {[field]: 1}, fields: {id_: 1,[field]: 1}
-  }).map(x => x[field]), true);
+function distinct(collection, field, filter) {
+  if (filter) {
+    return _.uniq(collection.find({[field]: filter}, {
+      sort: {[field]: 1}, fields: {id_: 1,[field]: 1}
+    }).map(x => x[field]), true);
+
+  } else {
+    return _.uniq(collection.find({}, {
+      sort: {[field]: 1}, fields: {id_: 1,[field]: 1}
+    }).map(x => x[field]), true);
+
+  }
+
 }
 
 
@@ -22,11 +39,16 @@ Template.registerHelper('selectedComponent', function () {
 
 
 Template.selectCategory.helpers({
-  getCategories: function () {
+  getCategories: function (cat) {
     return distinct(ComponentsCollection, 'category');
   },
-  isSelected: function () {
-    return (ComponentsCollection.findOne({_id: new Meteor.Collection.ObjectID( Session.get('selectedComponentDetailId'))}).category == this) ? 'selected' : '';
+  isSelected: function (type) {
+    console.log(">>>> type :" + type);
+    if (type == 'filter') {
+      return (Session.get('filterCategory') == this) ? 'selected' : '';
+    }else {
+      return (ComponentsCollection.findOne({_id: new Meteor.Collection.ObjectID( Session.get('selectedComponentDetailId'))}).category == this) ? 'selected' : '';
+    }
   }
 });
 
